@@ -5,7 +5,7 @@ set -e
 function startPortal()
 {
     # Start GeneWeb
-    /home/geneweb/distribution/gwd -lang ${LANGUAGE} -bd ${HOME} -hd /usr/share/geneweb -p 2317 -log ${HOME}/geneweb.log
+    /home/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /home/geneweb/distribution/bases -hd /home/geneweb/distribution/gw/lang -p 2317 -log ${HOME}/geneweb.log
 }
 
 function ensureBackupPathExists()

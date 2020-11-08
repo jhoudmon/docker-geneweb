@@ -48,12 +48,6 @@ ENV LANGUAGE en
 # Default access to gwsetup is from docker host
 ENV HOST_IP 172.17.0.1
 
-# Change the geneweb home directory to our database path to avoid stomping on debian package path /var/lib/geneweb
-RUN mkdir -p /home/geneweb/data
-
-# Create a volume on the container
-VOLUME /home/geneweb/data
-
 # Expose the geneweb and gwsetup ports to the docker host
 EXPOSE 2317
 EXPOSE 2316
