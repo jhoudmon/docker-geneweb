@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  portal:
+    image: jhoudmon/geneweb:1.0
+    volumes:
+      - /home/perso/Workspace/geneweb/data:/home/geneweb/data
+    ports:
+      - 2317:2317
+    entrypoint:
+      - main.sh
+      - start-portal
+    env_file:
+      - .env
+    restart: always
+
+  setup:
+    image: jhoudmon/geneweb:1.0
+    volumes:
+      - /home/perso/Workspace/geneweb/data:/home/geneweb/data
+    ports:
+      - 2316:2316
+    entrypoint:
+      - main.sh
+      - start-setup
+    env_file:
+      - .env
+    restart: always
