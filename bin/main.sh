@@ -33,7 +33,7 @@ function startSetup()
         ensureBackupPathExists
         ensureImportPathExists
 
-        /home/geneweb/distribution/gwsetup -p 2316 -gd /home/geneweb/distribution/gw -bindir /home/geneweb/distribution -lang ${LANGUAGE}  -only ${HOME}/gwsetup_only.txt 2>&1 | tee -a ${HOME}/gwsetup.log
+        /home/geneweb/distribution/gwsetup -p 2316 -gd /home/geneweb/distribution/gw -bindir /home/geneweb/distribution/gw -lang ${LANGUAGE}  -only ${HOME}/gwsetup_only.txt 2>&1 | tee -a ${HOME}/gwsetup.log
 
     popd 1> /dev/null
 }
