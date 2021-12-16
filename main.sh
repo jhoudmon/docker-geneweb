@@ -7,9 +7,9 @@ PROJECT_RELEASE=7.0
 
 WEB_PORT=2317
 SETUP_PORT=2316
-DATA_HOME=/home/perso/Workspace/geneweb/data
+DATA_HOME=/share/homes/lptitjean/genealogie/bases
 LANGUAGE="fr"
-HOST_IP="172.17.0.1"
+HOST_IP="192.168.26.16"
 TIME_ZONE="France/Paris"
 
 function containerName()

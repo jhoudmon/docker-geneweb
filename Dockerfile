@@ -1,7 +1,10 @@
-FROM alpine:3.12.1 AS builder
+FROM alpine:3.15.0 AS builder
 
 # Install packages
-RUN apk add build-base ocaml opam coreutils git m4 perl gmp-dev
+RUN apk add build-base ocaml opam coreutils git m4 perl gmp-dev bash perl-utils
+
+RUN cpan IPC::System::Simple
+RUN cpan String::ShellQuote
  
 # Create geneweb user
 RUN adduser --disabled-password geneweb
@@ -20,7 +23,7 @@ RUN chmod a+x /home/geneweb/geneweb_install.sh
 RUN /home/geneweb/geneweb_install.sh
 
 # Create final container with compiled binaries
-FROM alpine:3.12.1
+FROM alpine:3.15.0 
 
 # Install packages
 RUN apk add bash gmp
@@ -36,8 +39,10 @@ RUN adduser --disabled-password geneweb
 
 # Copy files
 RUN mkdir -p /home/geneweb/distribution
-RUN mkdir -p /home/geneweb/logs
 COPY --from=builder --chown=geneweb:geneweb /home/geneweb/source/distribution /home/geneweb/distribution
+
+RUN mkdir -p /home/geneweb/logs
+RUN chown geneweb:geneweb /home/geneweb/logs
 
 # Change user
 USER geneweb

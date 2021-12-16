@@ -5,7 +5,7 @@ set -e
 function startPortal()
 {
     # Start GeneWeb
-    /home/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /home/geneweb/distribution/bases -hd /home/geneweb/distribution/gw/lang -p 2317 -log ${HOME}/geneweb.log
+    /home/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /home/geneweb/distribution/bases -hd /home/geneweb/distribution/gw/lang -p 2317 -log ${HOME}/logs/geneweb.log
 }
 
 function ensureBackupPathExists()
@@ -33,7 +33,7 @@ function startSetup()
         ensureBackupPathExists
         ensureImportPathExists
 
-        /home/geneweb/distribution/gwsetup -p 2316 -gd /home/geneweb/distribution/gw -bindir /home/geneweb/distribution/gw -lang ${LANGUAGE}  -only ${HOME}/gwsetup_only.txt 2>&1 | tee -a ${HOME}/gwsetup.log
+        /home/geneweb/distribution/gwsetup -p 2316 -gd /home/geneweb/distribution/gw -bindir /home/geneweb/distribution/gw -lang ${LANGUAGE}  -only ${HOME}/gwsetup_only.txt 2>&1 | tee -a ${HOME}/logs/gwsetup.log
 
     popd 1> /dev/null
 }
