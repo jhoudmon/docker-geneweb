@@ -11,7 +11,7 @@ IFS="
         baseName=$(echo $(echo "${gedComFile%.*}") | tr -cd '[:alnum:]-')
 
         echo "Importing GEDCOM file '${PWD}/${ged}' as '${baseName}'" | tee -a import.log
-        /home/geneweb/distribution/ged2gwb2 -f "${PWD}/${ged}" -o ${baseName} 2>&1 | tee -a import.log
+        /opt/geneweb/distribution/ged2gwb2 -f "${PWD}/${ged}" -o ${baseName} 2>&1 | tee -a import.log
     done;
 
 IFS=${OLD_IFS}

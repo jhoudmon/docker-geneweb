@@ -5,7 +5,7 @@ set -e
 function startPortal()
 {
     # Start GeneWeb
-    /home/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /home/geneweb/distribution/bases -hd /home/geneweb/distribution/gw/lang -p 2317 -log ${HOME}/logs/geneweb.log
+    /opt/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /opt/geneweb/bases -hd /opt/geneweb/distribution/gw/lang -p 2317 -log /opt/geneweb/logs/geneweb.log
 }
 
 function ensureBackupPathExists()
@@ -24,16 +24,16 @@ function ensureImportPathExists()
 
 function startSetup()
 {
-    pushd ${HOME} 1> /dev/null
+    pushd /opt/geneweb 1> /dev/null
 
         if [[ -n "${HOST_IP}" ]]; then
-           echo "${HOST_IP}" > ${HOME}/gwsetup_only.txt
+           echo "${HOST_IP}" > /opt/geneweb/gwsetup_only.txt
         fi
 
         ensureBackupPathExists
         ensureImportPathExists
 
-        /home/geneweb/distribution/gwsetup -p 2316 -gd /home/geneweb/distribution/gw -bindir /home/geneweb/distribution/gw -lang ${LANGUAGE}  -only ${HOME}/gwsetup_only.txt 2>&1 | tee -a ${HOME}/logs/gwsetup.log
+        /opt/geneweb/distribution/gwsetup -p 2316 -gd /opt/geneweb/distribution/gw -bindir /opt/geneweb/distribution/gw -lang ${LANGUAGE}  -only /opt/geneweb/gwsetup_only.txt 2>&1 | tee -a /opt/geneweb/logs/gwsetup.log
 
     popd 1> /dev/null
 }

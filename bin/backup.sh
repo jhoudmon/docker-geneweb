@@ -11,7 +11,7 @@ pushd ${HOME} 1> /dev/null
         databaseBackupPath="$(pwd)/backup/${databaseName}-$(date +%Y%m%d-%Z-%H%M%S).ged"
 
         echo "Backing up database '${databaseName}' to ${databaseBackupPath}" | tee -a backup.log
-        /home/geneweb/distribution/gwb2ged ${databaseName} -o ${databaseBackupPath} -charset ASCII 2>&1 | tee -a backup.log
+        /opt/geneweb/distribution/gwb2ged ${databaseName} -o ${databaseBackupPath} -charset ASCII 2>&1 | tee -a backup.log
     done;
 
 popd 1> /dev/null
