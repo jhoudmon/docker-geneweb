@@ -35,7 +35,7 @@ COPY bin/*.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/*.sh
 
 # Create geneweb user
-RUN adduser --disabled-password geneweb
+RUN adduser -u1001 --disabled-password geneweb
 
 # Copy files
 RUN mkdir -p /opt/geneweb/distribution
@@ -43,16 +43,10 @@ RUN chown -R geneweb:geneweb /opt/geneweb
 COPY --from=builder --chown=geneweb:geneweb /home/geneweb/source/distribution /opt/geneweb/distribution
 
 COPY --chown=geneweb:geneweb bin/gwd /opt/geneweb/distribution/
-RUN chmod u+x /opt/geneweb/distribution/gwd
+RUN chmod a+x /opt/geneweb/distribution/gwd
 
 RUN mkdir -p /opt/geneweb/logs
 RUN chown geneweb:geneweb /opt/geneweb/logs
-
-RUN mkdir -p /opt/geneweb/bases
-RUN chown geneweb:geneweb /opt/geneweb/bases
-
-# Change user
-USER geneweb
 
 # Expose the geneweb and gwsetup ports to the docker host
 EXPOSE 2317

@@ -75,7 +75,7 @@ function runContainer()
         -d=true \
         -p ${SETUP_PORT}:2316 \
         -p ${WEB_PORT}:2317 \
-        --volume ${DATA_HOME}:/opt/geneweb/bases \
+        --volume ${DATA_HOME}:/opt/geneweb/distribution/bases \
         --env HOST_IP=${HOST_IP} \
         --env LANGUAGE=${LANGUAGE} \
         --env TZ=${TIME_ZONE} \

@@ -1,4 +1,4 @@
 #!/bin/sh
 cd `dirname "$0"`
 cd bases
-exec /opt/geneweb/distribution/gwd "$@"
+exec /opt/geneweb/distribution/gw/gwd "$@"

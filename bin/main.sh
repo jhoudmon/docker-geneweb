@@ -5,7 +5,7 @@ set -e
 function startPortal()
 {
     # Start GeneWeb
-    /opt/geneweb/distribution/gwd -lang ${LANGUAGE} -bd /opt/geneweb/bases -hd /opt/geneweb/distribution/gw/lang -p 2317 -log /opt/geneweb/logs/geneweb.log
+    /opt/geneweb/distribution/gwd -bd /opt/geneweb/distribution/bases -lang fr -hd /opt/geneweb/distribution/gw -p 2317 -log /opt/geneweb/logs/geneweb.log -add_lexicon /opt/geneweb/distribution/gw/lang/lexicon.txt
 }
 
 function ensureBackupPathExists()
@@ -54,8 +54,8 @@ case "$1" in
             ;;
 
         start-all)
-            startSetup &
-            startPortal
+            startPortal &
+            startSetup
             ;;
 
         backup)
